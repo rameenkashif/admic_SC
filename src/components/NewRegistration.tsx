@@ -1243,9 +1243,9 @@ export const NewRegistration: React.FC<NewRegistrationProps> = ({
                         const p12 = m === 1 ? 45 : m === 3 ? 120 : m === 6 ? 230 : 420;
                         return (
                           <>
-                            <option value="8 hyrje" className="bg-slate-900 text-white">8 hyrje — {p8} €</option>
-                            <option value="4 hyrje" className="bg-slate-900 text-white">4 hyrje — {p4} €</option>
-                            <option value="12 hyrje" className="bg-slate-900 text-white">12 hyrje — {p12} €</option>
+                            <option value="8 hyrje" className="bg-slate-900 text-white">8 hyrje - {p8} €</option>
+                            <option value="4 hyrje" className="bg-slate-900 text-white">4 hyrje - {p4} €</option>
+                            <option value="12 hyrje" className="bg-slate-900 text-white">12 hyrje - {p12} €</option>
                           </>
                         );
                       })()}
@@ -1297,10 +1297,10 @@ export const NewRegistration: React.FC<NewRegistrationProps> = ({
                       onChange={(e) => setAktiveMonth(e.target.value)}
                       className="w-full bg-blue-500/15 border border-blue-400/30 text-indigo-100 font-bold rounded-2xl px-4 py-3 text-sm focus:outline-none focus:border-blue-400 cursor-pointer"
                     >
-                      <option value="1 muaj" className="bg-slate-900 text-white">1 muaj — 60 €</option>
-                      <option value="3 muaj" className="bg-slate-900 text-white">3 muaj — 160 €</option>
-                      <option value="6 muaj" className="bg-slate-900 text-white">6 muaj — 300 €</option>
-                      <option value="12 muaj" className="bg-slate-900 text-white">12 muaj — 550 €</option>
+                      <option value="1 muaj" className="bg-slate-900 text-white">1 muaj - 60 €</option>
+                      <option value="3 muaj" className="bg-slate-900 text-white">3 muaj - 160 €</option>
+                      <option value="6 muaj" className="bg-slate-900 text-white">6 muaj - 300 €</option>
+                      <option value="12 muaj" className="bg-slate-900 text-white">12 muaj - 550 €</option>
                     </select>
                   </div>
 

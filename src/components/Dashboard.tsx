@@ -141,9 +141,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
           <div>
             <div className="flex items-center justify-between mb-4 pb-3 border-b border-indigo-500/15">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-blue-500/20 border border-blue-400/30 flex items-center justify-center text-blue-400">
-                  <CalendarIcon className="w-4 h-4" />
-                </div>
+                <CalendarIcon className="w-5 h-5 text-blue-400" />
                 <div>
                   <h3 className="font-bold text-sm text-white">Kalendari i Qendrës</h3>
                 </div>
@@ -221,9 +219,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
           <div>
             <div className="flex items-center justify-between mb-3 pb-3 border-b border-indigo-500/15">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-indigo-500/20 border border-indigo-400/30 flex items-center justify-center text-indigo-400">
-                  <UserCheck className="w-4 h-4" />
-                </div>
+                <UserCheck className="w-5 h-5 text-indigo-400" />
                 <div>
                   <h3 className="font-bold text-sm text-white">Regjistrimet e Reja</h3>
                 </div>
@@ -313,9 +309,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
           <div>
             <div className="flex items-center justify-between mb-3 pb-3 border-b border-indigo-500/15">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-400/30 flex items-center justify-center text-amber-400">
-                  <MessageSquare className="w-4 h-4" />
-                </div>
+                <MessageSquare className="w-5 h-5 text-amber-400" />
                 <div>
                   <h3 className="font-bold text-sm text-white">Mesazhet e Pranuara</h3>
                   <p className="text-[10px] text-slate-400">Kërkesa nga anëtarët</p>
@@ -367,9 +361,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
           <div>
             <div className="flex items-center justify-between mb-3 pb-3 border-b border-indigo-500/15">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center text-emerald-400">
-                  <Users className="w-4 h-4" />
-                </div>
+                <Users className="w-5 h-5 text-emerald-400" />
                 <div>
                   <h3 className="font-bold text-sm text-white">Hyrjet Reale Sot</h3>
                   <p className="text-[10px] text-slate-400">Skanimi i kartelave RFID</p>
@@ -401,9 +393,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
                 entrancesStream.map((item) => (
                   <div key={item.id} className="p-2.5 rounded-2xl bg-slate-900/60 border border-white/5 flex items-center justify-between text-xs">
                     <div className="flex items-center gap-3">
-                      <div className="w-7 h-7 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
-                        <CheckCircle className="w-3.5 h-3.5" />
-                      </div>
+                      <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" />
                       <div>
                         <span className="font-bold text-white block">{item.member}</span>
                         <span className="text-[10px] text-slate-400">{item.program} • {item.gate}</span>
@@ -426,18 +416,16 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
       </div>
 
-      {/* Pishinat — përmbledhje sipas kalendarit Section */}
+      {/* Pishinat - përmbledhje sipas kalendarit Section */}
       <div className="mt-8 space-y-6">
         {/* Header Teal Banner */}
         <div className="bg-gradient-to-r from-teal-900/80 via-cyan-900/70 to-slate-900/90 border border-teal-500/30 rounded-3xl p-6 sm:p-8 relative overflow-hidden shadow-2xl backdrop-blur-md">
           <div className="absolute top-0 right-0 -mt-10 -mr-10 w-60 h-60 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
           <div className="flex items-start gap-4 relative z-10">
-            <div className="w-12 h-12 rounded-2xl bg-teal-500/20 border border-teal-400/40 flex items-center justify-center text-cyan-300 shrink-0 shadow-lg">
-              <Waves className="w-6 h-6" />
-            </div>
+            <Waves className="w-7 h-7 text-cyan-300 shrink-0" />
             <div>
               <h2 className="text-xl sm:text-2xl font-extrabold text-white font-['Cal_Sans'] tracking-tight">
-                Pishinat — përmbledhje sipas kalendarit
+                Pishinat - përmbledhje sipas kalendarit
               </h2>
               <p className="text-xs sm:text-sm text-cyan-100/90 mt-2 leading-relaxed">
                 Shifrat e statusit më poshtë janë <strong className="text-white font-bold">gjithsej</strong> (të gjitha ditët). Bloku "Sipas pishinës" përditësohet sipas <strong className="text-white font-bold">ditës së zgjedhur</strong> në kalendar.
@@ -461,9 +449,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
             {/* Card 1: AKTIV */}
             <div className="p-5 rounded-2xl bg-slate-900/80 border border-emerald-500/20 flex items-center justify-between shadow-md">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center text-emerald-400">
-                  <CheckCircle2 className="w-5 h-5" />
-                </div>
+                <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
                 <span className="text-xs font-bold uppercase text-slate-300 tracking-wider font-mono">AKTIV</span>
               </div>
               <span className="text-3xl font-extrabold text-emerald-400 font-mono">0</span>
@@ -472,9 +458,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
             {/* Card 2: NË SKADIM */}
             <div className="p-5 rounded-2xl bg-slate-900/80 border border-amber-500/20 flex items-center justify-between shadow-md">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-amber-500/20 border border-amber-400/30 flex items-center justify-center text-amber-400">
-                  <Clock className="w-5 h-5" />
-                </div>
+                <Clock className="w-5 h-5 text-amber-400 shrink-0" />
                 <span className="text-xs font-bold uppercase text-slate-300 tracking-wider font-mono">NË SKADIM</span>
               </div>
               <span className="text-3xl font-extrabold text-amber-400 font-mono">0</span>

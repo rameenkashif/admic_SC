@@ -9,15 +9,13 @@ interface ScLogoProps {
 export const ScLogo: React.FC<ScLogoProps> = ({ className = "h-10", showSubtitle = true }) => {
   return (
     <div className="flex items-center gap-3">
-      {/* Generated Logo Image with sharp contrast styling */}
-      <div className="relative rounded-2xl bg-black border border-white/10 shadow-lg p-1 shrink-0 overflow-hidden group">
-        <img
-          src={logoImg}
-          alt="SC Sports & Leisure"
-          referrerPolicy="no-referrer"
-          className="h-9 w-auto object-contain rounded-xl"
-        />
-      </div>
+      {/* SC Logo Image */}
+      <img
+        src={logoImg}
+        alt="SC Sports & Leisure"
+        referrerPolicy="no-referrer"
+        className="h-10 w-auto object-contain shrink-0"
+      />
 
       {showSubtitle && (
         <div>

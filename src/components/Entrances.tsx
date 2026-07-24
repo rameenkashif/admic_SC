@@ -246,9 +246,7 @@ export const Entrances: React.FC<EntrancesProps> = ({
           ))
         ) : (
           <div className="glass-panel p-12 rounded-3xl border border-dashed border-indigo-500/30 text-center space-y-3">
-            <div className="w-12 h-12 rounded-2xl bg-indigo-500/20 border border-indigo-400/30 flex items-center justify-center mx-auto text-indigo-400">
-              <QrCode className="w-6 h-6" />
-            </div>
+            <QrCode className="w-8 h-8 text-indigo-400 mx-auto" />
             <h3 className="font-bold text-base text-white">Nuk ka regjistrime në këtë kategori</h3>
             <p className="text-xs text-slate-400 max-w-md mx-auto">
               Nuk u gjet asnjë regjistrim aktiv apo hyrje me këtë kriter kërkimi. Klikoni butonin për të hapur formën e regjistrimit të ri.

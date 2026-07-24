@@ -110,9 +110,7 @@ export const Employees: React.FC<EmployeesProps> = ({
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center border border-indigo-400/30">
-              <UsersRound className="w-4 h-4" />
-            </div>
+            <UsersRound className="w-5 h-5 text-indigo-400" />
             <h1 className="text-xl font-bold text-white">Punëtorët & Stafi</h1>
           </div>
           <p className="text-xs text-slate-400 mt-1">
@@ -215,7 +213,7 @@ export const Employees: React.FC<EmployeesProps> = ({
                           <span>{emp.receptionName}</span>
                         </span>
                       ) : (
-                        <span className="text-slate-500 font-mono pl-2">—</span>
+                        <span className="text-slate-500 font-mono pl-2">-</span>
                       )}
                     </td>
 

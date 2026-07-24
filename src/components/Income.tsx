@@ -114,9 +114,7 @@ export const Income: React.FC<IncomeProps> = ({
       <div className="flex items-center justify-between">
         <div>
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center border border-emerald-400/30">
-              <TrendingUp className="w-4 h-4" />
-            </div>
+            <TrendingUp className="w-5 h-5 text-emerald-400" />
             <h1 className="text-xl font-bold text-white">Të Hyrat & Financa</h1>
           </div>
           <p className="text-xs text-slate-400 mt-1">
@@ -137,13 +135,7 @@ export const Income: React.FC<IncomeProps> = ({
         {/* Left Card: Register Status */}
         <div className="glass-panel p-5 rounded-3xl border border-indigo-500/20 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className={`w-12 h-12 rounded-2xl flex items-center justify-center border ${
-              income.isOpen
-                ? 'bg-emerald-500/20 border-emerald-400/40 text-emerald-400'
-                : 'bg-red-500/20 border-red-400/40 text-red-400'
-            }`}>
-              {income.isOpen ? <Unlock className="w-6 h-6" /> : <Lock className="w-6 h-6" />}
-            </div>
+            {income.isOpen ? <Unlock className="w-6 h-6 text-emerald-400" /> : <Lock className="w-6 h-6 text-red-400" />}
             <div>
               <div className="flex items-center gap-2">
                 <span className={`w-2.5 h-2.5 rounded-full ${income.isOpen ? 'bg-emerald-400 animate-ping' : 'bg-red-400'}`}></span>
@@ -172,9 +164,7 @@ export const Income: React.FC<IncomeProps> = ({
         {/* Right Card: Shift Schedule */}
         <div className="glass-panel p-5 rounded-3xl border border-indigo-500/20 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-blue-500/20 text-blue-400 border border-blue-400/30 flex items-center justify-center">
-              <Clock className="w-5 h-5" />
-            </div>
+            <Clock className="w-5 h-5 text-blue-400 shrink-0" />
             <div>
               <h3 className="font-bold text-xs text-white uppercase tracking-wider">Orari i Ndërrimeve</h3>
               <p className="text-[11px] text-slate-300 mt-0.5">
@@ -196,7 +186,7 @@ export const Income: React.FC<IncomeProps> = ({
         {/* Left 2 cols: Shift Breakdown */}
         <div className="lg:col-span-2 glass-panel p-6 rounded-3xl border border-indigo-500/20 space-y-4">
           <h3 className="text-sm font-bold text-white border-b border-indigo-500/15 pb-2">
-            Përmbledhje e Ditës — Ndërrimet
+            Përmbledhje e Ditës - Ndërrimet
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -256,9 +246,7 @@ export const Income: React.FC<IncomeProps> = ({
         {/* Right Card: Live Date & Reset Timer */}
         <div className="glass-panel p-6 rounded-3xl border border-indigo-500/20 flex flex-col justify-between items-center text-center">
           <div>
-            <div className="w-12 h-12 rounded-2xl bg-blue-500/20 text-blue-400 border border-blue-400/30 flex items-center justify-center mx-auto mb-3">
-              <Calendar className="w-6 h-6" />
-            </div>
+            <Calendar className="w-6 h-6 text-blue-400 mx-auto mb-3" />
             <span className="text-xs text-indigo-300 uppercase font-bold tracking-wider">Data e Sotshme</span>
             <h2 className="text-2xl font-black text-white font-mono mt-1">{formattedTodayDate}</h2>
             <p className="text-xs text-slate-400 mt-1">{albanianDayName} • {formattedLiveTime} • Step Sport Center</p>
@@ -304,7 +292,7 @@ export const Income: React.FC<IncomeProps> = ({
                 onChange={(e) => setStartDate(e.target.value)}
                 className="bg-transparent text-white focus:outline-none"
               />
-              <span className="text-slate-500">—</span>
+              <span className="text-slate-500">-</span>
               <input
                 type="date"
                 value={endDate}

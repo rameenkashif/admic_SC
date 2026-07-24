@@ -140,9 +140,7 @@ export const Receptions: React.FC<ReceptionsProps> = ({
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center border border-blue-400/30">
-              <Building2 className="w-4 h-4" />
-            </div>
+            <Building2 className="w-5 h-5 text-blue-400" />
             <h1 className="text-xl font-bold text-white font-['Cal_Sans']">Recepsionet & Filialat</h1>
           </div>
         </div>
@@ -174,13 +172,7 @@ export const Receptions: React.FC<ReceptionsProps> = ({
                 <div>
                   {/* Title & Icon */}
                   <div className="flex items-center gap-4 mb-4">
-                    <div className={`w-12 h-12 rounded-2xl border flex items-center justify-center shadow-md shrink-0 ${
-                      isCurrentActive
-                        ? 'bg-gradient-to-tr from-emerald-900 to-teal-800 border-emerald-400/40 text-emerald-300'
-                        : 'bg-gradient-to-tr from-indigo-900 to-slate-800 border-indigo-400/30 text-indigo-300'
-                    }`}>
-                      <Building2 className="w-6 h-6" />
-                    </div>
+                    <Building2 className={`w-7 h-7 shrink-0 ${isCurrentActive ? 'text-emerald-300' : 'text-indigo-300'}`} />
                     <div>
                       <h3 className="font-extrabold text-lg text-white leading-snug font-['Cal_Sans']">{rec.name}</h3>
                     </div>
@@ -235,9 +227,7 @@ export const Receptions: React.FC<ReceptionsProps> = ({
         </div>
       ) : (
         <div className="glass-panel p-12 rounded-3xl border border-dashed border-indigo-500/30 text-center space-y-3">
-          <div className="w-12 h-12 rounded-2xl bg-indigo-500/20 border border-indigo-400/30 flex items-center justify-center mx-auto text-indigo-400">
-            <Building2 className="w-6 h-6" />
-          </div>
+          <Building2 className="w-8 h-8 text-indigo-400 mx-auto" />
           <h3 className="font-bold text-base text-white">Nuk ka recepsione të regjistruara</h3>
           <p className="text-xs text-slate-400 max-w-md mx-auto">
             Krijoni recepsionin ose filialin tuaj të parë duke përdorur butonin "+ Recepsion i ri".

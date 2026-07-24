@@ -18,11 +18,11 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
 
   const getScheduleTitle = () => {
     switch (activeTab) {
-      case 'pool_4_lanes': return 'Orari — Pishina me 4 korsi (Kati i dytë)';
-      case 'pool_small': return 'Orari — Pishinat e vogla (Kati i parë)';
-      case 'pool_5_lanes': return 'Orari — Pishina me 5 korsi (Olimpike)';
-      case 'kids_fitness_schedule': return 'Orari — Kids Fitness Gym';
-      case 'step_adults_schedule': return 'Orari — Step Adults Gym';
+      case 'pool_4_lanes': return 'Orari - Pishina me 4 korsi (Kati i dytë)';
+      case 'pool_small': return 'Orari - Pishinat e vogla (Kati i parë)';
+      case 'pool_5_lanes': return 'Orari - Pishina me 5 korsi (Olimpike)';
+      case 'kids_fitness_schedule': return 'Orari - Kids Fitness Gym';
+      case 'step_adults_schedule': return 'Orari - Step Adults Gym';
       default: return 'Orari i Pishinave';
     }
   };
@@ -47,9 +47,7 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center border border-blue-400/30">
-              <Waves className="w-4 h-4" />
-            </div>
+            <Waves className="w-5 h-5 text-blue-400" />
             <h1 className="text-xl font-bold text-white">{getScheduleTitle()}</h1>
           </div>
           <p className="text-xs text-slate-400 mt-1">
