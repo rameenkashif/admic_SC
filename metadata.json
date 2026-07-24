@@ -1,0 +1,6 @@
+{
+  "name": "Step Sport Center - Admin Panel",
+  "description": "Modern Apple-style glassmorphism admin dashboard for Step Sport Center management, registrations, receptions, employees, schedules, and revenue tracking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
