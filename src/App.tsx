@@ -161,11 +161,17 @@ export default function App() {
 
   return (
     <div
-      className="flex h-screen bg-[#0d152a] text-slate-100 overflow-hidden font-sans antialiased selection:bg-blue-500 selection:text-white relative bg-cover bg-center"
+      className={`flex h-screen overflow-hidden font-sans antialiased selection:bg-blue-500 selection:text-white relative bg-cover bg-center transition-colors duration-300 ${
+        theme === 'light' ? 'bg-slate-100 text-slate-900' : 'bg-[#0d152a] text-slate-100'
+      }`}
       style={{ backgroundImage: `url(${bgImg})` }}
     >
-      {/* Dark overlay so text and glass panels stay readable over the background photo */}
-      <div className="absolute inset-0 z-0 bg-[#0d152a]/60 pointer-events-none"></div>
+      {/* Overlay so text and glass panels stay readable over the background photo, tuned per theme */}
+      <div
+        className={`absolute inset-0 z-0 pointer-events-none ${
+          theme === 'light' ? 'bg-white/70' : 'bg-[#0d152a]/75'
+        }`}
+      ></div>
 
       {/* Persistent Glassmorphism Sidebar */}
       <Sidebar

@@ -1,13 +1,15 @@
 @import "tailwindcss";
+@import "@fontsource-variable/inter/wght.css";
+@import "@fontsource/cal-sans";
 
 @layer base {
   :root {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
     font-weight: 400;
   }
 
   body {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
     font-weight: 400;
     @apply bg-slate-950 text-slate-100 antialiased min-h-screen selection:bg-blue-500 selection:text-white transition-colors duration-300;
     background-image: 
@@ -24,13 +26,13 @@
 
   /* Subheadings: Inter with higher weight */
   h4, h5, h6, .subheading {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter Variable', 'Inter', sans-serif;
     font-weight: 700;
   }
 
   /* Default text paragraph/spans */
   p, span, label, input, button, select, textarea, td, th {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter Variable', 'Inter', sans-serif;
   }
 
   /* Light Theme Body Background */
@@ -126,7 +128,7 @@ html.light .glass-panel {
 }
 
 .glass-panel-light {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(9, 14, 30, 0.6);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -140,7 +142,7 @@ html.light .glass-panel-light {
 }
 
 .liquid-glass-sidebar {
-  background: rgba(15, 23, 42, 0.55);
+  background: rgba(9, 14, 30, 0.82);
   backdrop-filter: blur(28px) saturate(200%) contrast(108%);
   -webkit-backdrop-filter: blur(28px) saturate(200%) contrast(108%);
   border-right: 1px solid rgba(255, 255, 255, 0.15);
@@ -220,15 +222,8 @@ html.light .text-slate-400 {
   color: #64748b !important;
 }
 
-html.light .bg-slate-900,
-html.light .bg-slate-900\/80,
-html.light .bg-slate-900\/60,
-html.light .bg-slate-900\/70,
-html.light .bg-slate-900\/50,
-html.light .bg-slate-950,
-html.light .bg-slate-950\/60,
-html.light .bg-slate-950\/80,
-html.light .bg-slate-950\/50 {
+html.light [class*="bg-slate-900"],
+html.light [class*="bg-slate-950"] {
   background-color: #f1f5f9 !important;
   color: #0f172a !important;
 }

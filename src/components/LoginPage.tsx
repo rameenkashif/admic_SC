@@ -59,13 +59,13 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
             </h1>
             
             {/* Subtitle in Inter */}
-            <p className="text-xs sm:text-sm text-slate-200/80 font-normal font-['Inter']">
+            <p className="text-xs sm:text-sm text-slate-200/80 font-normal font-['Inter_Variable','Inter']">
               Welcome back. Please log in to your account.
             </p>
           </div>
 
           {/* Login Form */}
-          <form onSubmit={handleSubmit} className="space-y-4 font-['Inter']">
+          <form onSubmit={handleSubmit} className="space-y-4 font-['Inter_Variable','Inter']">
             {error && (
               <div className="p-3 rounded-2xl bg-red-500/20 border border-red-400/40 text-red-200 text-xs font-medium text-center">
                 {error}
