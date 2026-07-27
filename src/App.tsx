@@ -29,6 +29,7 @@ import {
 } from './data/mockData';
 
 import { NavTab, Reception, Employee, RegistrationRecord, DailyIncome, CategoryRevenue, PoolSlot, MessageItem } from './types';
+import bgImg from './assets/images/admin_panel_bg.jpg';
 
 export default function App() {
   // Authentication State
@@ -159,41 +160,12 @@ export default function App() {
   const currentOrFirstReception = activeReception || receptions[0];
 
   return (
-    <div className="flex h-screen bg-[#0d152a] text-slate-100 overflow-hidden font-sans antialiased selection:bg-blue-500 selection:text-white relative">
-      
-      {/* Swimming Pool & Water Aesthetic Lighter Liquid Background (matching Login Page Shine) */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        {/* Deep navy blue and indigo radial glows */}
-        <div className="absolute -top-32 -left-32 w-[55rem] h-[55rem] bg-indigo-700/35 rounded-full blur-[130px] animate-pulse"></div>
-        <div className="absolute -bottom-32 -right-32 w-[60rem] h-[60rem] bg-slate-800/60 rounded-full blur-[150px] animate-pulse"></div>
-
-        {/* Brighter vivid organic liquid shapes directly for light refraction */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[42rem] h-[42rem] bg-gradient-to-tr from-cyan-400/35 via-teal-300/25 to-indigo-500/35 rounded-full blur-[65px] transform rotate-12"></div>
-        <div className="absolute bottom-1/4 right-1/3 w-[36rem] h-[36rem] bg-gradient-to-br from-blue-500/30 via-sky-300/25 to-emerald-400/25 rounded-full blur-[55px]"></div>
-        <div className="absolute top-1/2 left-1/4 w-[30rem] h-[30rem] bg-sky-400/20 rounded-full blur-[75px]"></div>
-
-        {/* Swimming Pool Water Surface Caustics Overlay */}
-        <div 
-          className="absolute inset-0 opacity-35 mix-blend-screen"
-          style={{
-            backgroundImage: `
-              radial-gradient(circle at 35% 35%, rgba(6, 182, 212, 0.55) 0%, transparent 50%),
-              radial-gradient(circle at 65% 65%, rgba(99, 102, 241, 0.5) 0%, transparent 50%),
-              radial-gradient(circle at 50% 50%, rgba(20, 184, 166, 0.45) 0%, transparent 60%)
-            `,
-          }}
-        ></div>
-
-        {/* Animated Water Ripples SVG Lines */}
-        <div className="absolute inset-0 opacity-20 flex flex-col justify-between pointer-events-none">
-          <svg className="w-full h-40 text-cyan-300" fill="none" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M0,0 C150,90 350,-40 500,60 C650,160 900,10 1200,40 L1200,120 L0,120 Z" fill="currentColor" />
-          </svg>
-          <svg className="w-full h-40 text-teal-300 transform rotate-180" fill="none" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M0,0 C150,90 350,-40 500,60 C650,160 900,10 1200,40 L1200,120 L0,120 Z" fill="currentColor" />
-          </svg>
-        </div>
-      </div>
+    <div
+      className="flex h-screen bg-[#0d152a] text-slate-100 overflow-hidden font-sans antialiased selection:bg-blue-500 selection:text-white relative bg-cover bg-center"
+      style={{ backgroundImage: `url(${bgImg})` }}
+    >
+      {/* Dark overlay so text and glass panels stay readable over the background photo */}
+      <div className="absolute inset-0 z-0 bg-[#0d152a]/60 pointer-events-none"></div>
 
       {/* Persistent Glassmorphism Sidebar */}
       <Sidebar
