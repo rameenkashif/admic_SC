@@ -1,5 +1,5 @@
 import React from 'react';
-import logoImg from '../assets/images/step_center_logo_1784786974967.jpg';
+import logoImg from '../assets/images/sc_logo.png';
 
 interface ScLogoProps {
   className?: string;
