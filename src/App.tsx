@@ -9,7 +9,12 @@ import { Income } from './components/Income';
 import { Entrances } from './components/Entrances';
 import { NewRegistration } from './components/NewRegistration';
 import { PoolSchedules } from './components/PoolSchedules';
+import { ProgramsView } from './components/ProgramsView';
 import { Messages } from './components/Messages';
+import { Academy } from './components/Academy';
+import { GroupReservations } from './components/GroupReservations';
+import { Agents } from './components/Agents';
+import { UserSubscriptionHistoryView } from './components/UserSubscriptionHistoryView';
 import { PrintTicketModal } from './components/PrintTicketModal';
 import { ReserveSlotModal } from './components/ReserveSlotModal';
 
@@ -128,6 +133,10 @@ export default function App() {
 
   const handleUpdateRegistration = (updatedReg: RegistrationRecord) => {
     setRegistrations((prev) => prev.map((r) => (r.id === updatedReg.id ? updatedReg : r)));
+  };
+
+  const handleDeleteRegistration = (id: string) => {
+    setRegistrations((prev) => prev.filter((r) => r.id !== id));
   };
 
   const handleToggleRegisterStatus = () => {
@@ -289,6 +298,29 @@ export default function App() {
               onAddSlot={handleAddPoolSlot}
             />
           )}
+
+          {(activeTab === 'prog_swimming_school' ||
+            activeTab === 'prog_individual' ||
+            activeTab === 'prog_kids_fitness' ||
+            activeTab === 'prog_step_adults' ||
+            activeTab === 'prog_duo') && (
+            <ProgramsView
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              registrations={registrations}
+              onUpdateRegistration={handleUpdateRegistration}
+              onDeleteRegistration={handleDeleteRegistration}
+              activeReception={currentOrFirstReception}
+            />
+          )}
+
+          {activeTab === 'prog_first_team' && <Academy />}
+
+          {activeTab === 'group_reservations' && <GroupReservations />}
+
+          {activeTab === 'agents' && <Agents />}
+
+          {activeTab === 'sub_history' && <UserSubscriptionHistoryView />}
 
         </main>
       </div>

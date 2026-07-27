@@ -16,7 +16,10 @@ export type NavTab =
   | 'prog_kids_fitness'
   | 'prog_step_adults'
   | 'prog_duo'
-  | 'prog_first_team';
+  | 'prog_first_team'
+  | 'group_reservations'
+  | 'agents'
+  | 'sub_history';
 
 export interface Reception {
   id: string;
@@ -50,22 +53,36 @@ export interface Employee {
 export interface RegistrationRecord {
   id: string;
   memberName: string;
+  firstName?: string;
+  lastName?: string;
+  parentName?: string;
+  age?: number | string;
   program: string;
-  programCategory: 'SHKOLLA E NOTIT' | 'INDIVIDUAL' | 'KIDS FITNESS' | 'STEP ADULTS' | 'DUO (FITNESS+NOT)' | 'REZERVIME GRUPORE';
+  programCategory: 'SHKOLLA E NOTIT' | 'INDIVIDUAL' | 'KIDS FITNESS' | 'STEP ADULTS' | 'DUO (FITNESS+NOT)' | 'REZERVIME GRUPORE' | 'EKIPA E PARË / AKADEMIA';
   duration: string;
   startDate: string;
   endDate: string;
   totalEntries: number;
   remainingEntries: number;
   phone: string;
+  email?: string;
   dob: string;
   status: 'Aktiv' | 'Inaktiv' | 'Në pritje';
   poolAssignment: string;
-  floor: string;
+  floor?: string;
   schedule: { day: string; time: string }[];
   paymentMethod: 'Cash' | 'POS' | 'Transfer Bankar' | 'Kompenzim';
   pricePaid: number;
+  discount?: string;
+  entryPlan?: string;
   rfid?: string;
+  collaborator?: string;
+  healthIssues?: string;
+  timeDuration?: string;
+  description?: string;
+  paymentStatus?: 'Payment Confirmed' | 'Pending' | 'Unpaid';
+  createdAt?: string;
+  receptionId?: string;
 }
 
 export interface DailyIncome {
@@ -98,6 +115,35 @@ export interface PoolSlot {
   color: string;
 }
 
+export interface AcademyPaymentHistoryItem {
+  id: string;
+  title: string;
+  statusTag: string;
+  amount: number;
+  date: string;
+  time: string;
+  description: string;
+  paymentId: string;
+  sessionId: string;
+}
+
+export interface AcademyStudent {
+  id: string;
+  name: string;
+  email: string;
+  email2?: string;
+  city?: string;
+  phone: string;
+  phone2?: string;
+  shuma: number;
+  borxhi: number;
+  totali: number;
+  grupi: 'EKIPA E PARE' | 'A' | 'B' | 'Gr/rr/20';
+  status: 'Active' | 'Inactive';
+  description?: string;
+  paymentHistory: AcademyPaymentHistoryItem[];
+}
+
 export interface MessageItem {
   id: string;
   sender: string;
@@ -106,4 +152,47 @@ export interface MessageItem {
   time: string;
   date: string;
   read: boolean;
+}
+
+export interface Agent {
+  id: string;
+  instituteName: string; // Emri i Institutit
+  phone: string; // Nr Telefonit
+  fullName: string; // Emri dhe Mbiemri
+  businessNumber: string; // Numri i Biznesit
+  email: string; // Email
+  discountPercentage: number; // Zbritja në % / Përqindja (%)
+  createdAt?: string;
+}
+
+export interface GroupReservation {
+  id: string;
+  groupName: string;
+  contactPerson: string;
+  email: string;
+  phone: string;
+  membersCount: number;
+  reservationDate: string;
+  timeSlot: string;
+  poolLocation: string;
+  status: 'Aktiv' | 'Në pritje' | 'Përfunduar' | 'Anuluar';
+  price: number;
+  notes?: string;
+}
+
+export interface SubscriptionHistoryEvent {
+  id: string;
+  action: string;
+  date: string;
+  payableAmount: number;
+  scanDetails: string;
+}
+
+export interface UserSubscriptionHistory {
+  id: string;
+  name: string;
+  rfid: string;
+  subscriptionPlan: string;
+  scansThisMonth: number;
+  events: SubscriptionHistoryEvent[];
 }

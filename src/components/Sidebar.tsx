@@ -17,7 +17,10 @@ import {
   Search,
   LogOut,
   ChevronDown,
-  Lock
+  Lock,
+  QrCode,
+  UserCheck,
+  History
 } from 'lucide-react';
 import { ScLogo } from './ScLogo';
 import { NavTab, Reception } from '../types';
@@ -64,13 +67,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
       locked
         ? 'opacity-50 text-slate-400 cursor-not-allowed hover:bg-transparent'
         : isNavActive(tab)
-        ? 'bg-indigo-600/30 text-white border border-indigo-400/30 shadow-lg shadow-indigo-500/10 backdrop-blur-md font-semibold'
-        : 'text-slate-300 hover:text-white hover:bg-white/5'
+        ? 'bg-white/15 text-white border border-white/35 shadow-lg shadow-black/20 backdrop-blur-md font-bold'
+        : 'text-slate-300 hover:text-white hover:bg-white/10 hover:border hover:border-white/15'
     }`;
   };
 
   return (
-    <aside className="w-64 glass-sidebar h-screen flex flex-col shrink-0 overflow-y-auto select-none border-r border-indigo-500/20">
+    <aside className="w-64 liquid-glass-sidebar h-screen flex flex-col shrink-0 overflow-y-auto select-none border-r border-white/15 shadow-2xl">
       {/* Brand Header */}
       <div className="p-4 border-b border-indigo-500/10">
         <ScLogo />
@@ -238,7 +241,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </div>
           <div className="space-y-1">
             <button
-              onClick={() => handleTabClick('new_registration')}
+              onClick={() => handleTabClick('prog_swimming_school')}
               className={navButtonClass('prog_swimming_school')}
             >
               <div className="flex items-center gap-2.5">
@@ -249,7 +252,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </button>
 
             <button
-              onClick={() => handleTabClick('new_registration')}
+              onClick={() => handleTabClick('prog_individual')}
               className={navButtonClass('prog_individual')}
             >
               <div className="flex items-center gap-2.5">
@@ -260,7 +263,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </button>
 
             <button
-              onClick={() => handleTabClick('new_registration')}
+              onClick={() => handleTabClick('prog_kids_fitness')}
               className={navButtonClass('prog_kids_fitness')}
             >
               <div className="flex items-center gap-2.5">
@@ -271,7 +274,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </button>
 
             <button
-              onClick={() => handleTabClick('new_registration')}
+              onClick={() => handleTabClick('prog_step_adults')}
               className={navButtonClass('prog_step_adults')}
             >
               <div className="flex items-center gap-2.5">
@@ -282,23 +285,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </button>
 
             <button
-              onClick={() => handleTabClick('new_registration')}
+              onClick={() => handleTabClick('prog_duo')}
               className={navButtonClass('prog_duo')}
             >
               <div className="flex items-center gap-2.5">
                 <Waves className="w-4 h-4 text-indigo-400" />
                 <span>Duo (Fitness+Not)</span>
-              </div>
-              {!isBranchSelected && <Lock className="w-3 h-3 text-purple-400/70" />}
-            </button>
-
-            <button
-              onClick={() => handleTabClick('new_registration')}
-              className={navButtonClass('prog_first_team')}
-            >
-              <div className="flex items-center gap-2.5">
-                <Trophy className="w-4 h-4 text-amber-400" />
-                <span>Ekipa e parë / Akademia</span>
               </div>
               {!isBranchSelected && <Lock className="w-3 h-3 text-purple-400/70" />}
             </button>
@@ -325,6 +317,50 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 3
               </span>
             )}
+          </button>
+
+          <button
+            onClick={() => handleTabClick('prog_first_team')}
+            className={navButtonClass('prog_first_team')}
+          >
+            <div className="flex items-center gap-2.5">
+              <Trophy className="w-4 h-4 text-indigo-400" />
+              <span>Ekipa e parë/Akademia</span>
+            </div>
+            {!isBranchSelected && <Lock className="w-3 h-3 text-purple-400/70" />}
+          </button>
+
+          <button
+            onClick={() => handleTabClick('group_reservations')}
+            className={navButtonClass('group_reservations')}
+          >
+            <div className="flex items-center gap-2.5">
+              <QrCode className="w-4 h-4 text-indigo-400" />
+              <span>Rezervime Grupore</span>
+            </div>
+            {!isBranchSelected && <Lock className="w-3 h-3 text-purple-400/70" />}
+          </button>
+
+          <button
+            onClick={() => handleTabClick('agents')}
+            className={navButtonClass('agents')}
+          >
+            <div className="flex items-center gap-2.5">
+              <UserCheck className="w-4 h-4 text-indigo-400" />
+              <span>Agjentët</span>
+            </div>
+            {!isBranchSelected && <Lock className="w-3 h-3 text-purple-400/70" />}
+          </button>
+
+          <button
+            onClick={() => handleTabClick('sub_history')}
+            className={navButtonClass('sub_history')}
+          >
+            <div className="flex items-center gap-2.5">
+              <History className="w-4 h-4 text-indigo-400" />
+              <span>Historia e Abonuesit</span>
+            </div>
+            {!isBranchSelected && <Lock className="w-3 h-3 text-purple-400/70" />}
           </button>
         </div>
       </div>
