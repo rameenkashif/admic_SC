@@ -52,13 +52,15 @@ export default function App() {
   };
 
   React.useEffect(() => {
-    if (theme === 'light') {
+    // The login page has its own fixed dark-glass identity and precedes any
+    // theme preference — only apply the light/dark toggle once logged in.
+    if (isLoggedIn && theme === 'light') {
       document.documentElement.classList.add('light');
     } else {
       document.documentElement.classList.remove('light');
     }
     localStorage.setItem('theme', theme);
-  }, [theme]);
+  }, [theme, isLoggedIn]);
 
   // Default active tab is 'receptions'
   const [activeTab, setActiveTab] = useState<NavTab>('receptions');

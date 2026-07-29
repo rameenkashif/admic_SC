@@ -221,6 +221,29 @@ html.light a .text-white:not([class*="bg-white/"]) {
   color: #ffffff !important;
 }
 
+/* Same idea for non-button colored chips/badges/avatars (plain divs/spans
+   with a vivid solid or gradient fill) — e.g. pool schedule time/member
+   badges and initials-avatar circles. */
+html.light [class*="bg-blue-600"].text-white,
+html.light [class*="bg-blue-500"].text-white,
+html.light [class*="bg-emerald-600"].text-white,
+html.light [class*="bg-emerald-500"].text-white,
+html.light [class*="bg-red-600"].text-white,
+html.light [class*="bg-rose-600"].text-white,
+html.light [class*="bg-amber-500"].text-white,
+html.light [class*="bg-sky-600"].text-white,
+html.light [class*="bg-purple-600"].text-white,
+html.light [class*="bg-indigo-600"].text-white,
+html.light [class*="to-indigo-600"].text-white,
+html.light [class*="to-blue-500"].text-white {
+  color: #ffffff !important;
+}
+
+/* Pool schedule occupancy bars: green fill in light mode (blue stays for dark) */
+html.light .pool-occupancy-fill {
+  background-color: #16a34a !important;
+}
+
 html.light .text-slate-100,
 html.light .text-slate-200,
 html.light .text-slate-300 {

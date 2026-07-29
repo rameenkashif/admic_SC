@@ -259,7 +259,7 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
           </div>
           <div className="w-full h-1.5 bg-slate-500/25 rounded-full overflow-hidden">
             <div
-              className={`h-full rounded-full transition-all ${isFull ? 'bg-rose-500' : 'bg-blue-500'}`}
+              className={`h-full rounded-full transition-all ${isFull ? 'bg-rose-500' : 'pool-occupancy-fill bg-blue-500'}`}
               style={{ width: `${pct}%` }}
             />
           </div>
@@ -397,7 +397,7 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
                   </div>
 
                   {/* SLOT 1 BLOCK */}
-                  <div className="bg-[#151c2e] border-2 border-blue-500/90 rounded-2xl p-3.5 aspect-square overflow-hidden shadow-xl shadow-blue-950/40 hover:border-blue-400 transition flex flex-col justify-between w-full">
+                  <div className="bg-[#151c2e] border-2 border-blue-500/90 rounded-2xl p-3.5 aspect-square min-h-[230px] overflow-hidden shadow-xl shadow-blue-950/40 hover:border-blue-400 transition flex flex-col justify-between w-full">
                     {/* Timing Badge */}
                     <div className="mb-2 shrink-0">
                       <div className="bg-blue-600/90 text-white font-extrabold px-2.5 py-1 rounded-lg text-xs flex flex-col text-center shadow-sm">
@@ -409,7 +409,7 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
                     </div>
 
                     {/* Members List */}
-                    <div className="flex-1 min-h-0 overflow-y-auto pr-1 space-y-1.5">
+                    <div className="flex-1 min-h-[104px] overflow-y-auto pr-1 space-y-1.5">
                       {slot1Members.map((m, idx) => (
                         <div
                           key={m.id}
@@ -444,7 +444,7 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
 
                   {/* SLOT 2 BLOCK (OR PLACEHOLDER) */}
                   {slot2Time ? (
-                    <div className="bg-[#151c2e] border-2 border-blue-500/90 rounded-2xl p-3.5 aspect-square overflow-hidden shadow-xl shadow-blue-950/40 hover:border-blue-400 transition flex flex-col justify-between w-full">
+                    <div className="bg-[#151c2e] border-2 border-blue-500/90 rounded-2xl p-3.5 aspect-square min-h-[230px] overflow-hidden shadow-xl shadow-blue-950/40 hover:border-blue-400 transition flex flex-col justify-between w-full">
                       <div className="mb-2 shrink-0">
                         <div className="bg-blue-600/90 text-white font-extrabold px-2.5 py-1 rounded-lg text-xs flex flex-col text-center shadow-sm">
                           <span>{slot2Time}</span>
@@ -454,7 +454,7 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
                         </div>
                       </div>
 
-                      <div className="flex-1 min-h-0 overflow-y-auto pr-1 space-y-1.5">
+                      <div className="flex-1 min-h-[104px] overflow-y-auto pr-1 space-y-1.5">
                         {slot2Members.map((m, idx) => (
                           <div
                             key={m.id}
@@ -486,7 +486,7 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
                       <div className="shrink-0">{renderOccupancyBar(slot2Members.length)}</div>
                     </div>
                   ) : (
-                    <div className="bg-[#111728]/50 border border-slate-800/60 rounded-2xl p-3.5 aspect-square flex flex-col justify-center items-center text-center text-slate-600 text-xs italic">
+                    <div className="bg-[#111728]/50 border border-slate-800/60 rounded-2xl p-3.5 aspect-square min-h-[230px] flex flex-col justify-center items-center text-center text-slate-600 text-xs italic">
                       Nuk ka orar pasdite
                     </div>
                   )}
