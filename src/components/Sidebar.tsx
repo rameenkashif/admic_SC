@@ -20,7 +20,9 @@ import {
   Lock,
   QrCode,
   UserCheck,
-  History
+  History,
+  Wallet,
+  Ticket
 } from 'lucide-react';
 import { ScLogo } from './ScLogo';
 import { NavTab, Reception } from '../types';
@@ -353,12 +355,34 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </button>
 
           <button
+            onClick={() => handleTabClick('payment_history')}
+            className={navButtonClass('payment_history')}
+          >
+            <div className="flex items-center gap-2.5">
+              <Wallet className="w-4 h-4 text-indigo-400" />
+              <span>Historia e Pagesës</span>
+            </div>
+            {!isBranchSelected && <Lock className="w-3 h-3 text-purple-400/70" />}
+          </button>
+
+          <button
             onClick={() => handleTabClick('sub_history')}
             className={navButtonClass('sub_history')}
           >
             <div className="flex items-center gap-2.5">
               <History className="w-4 h-4 text-indigo-400" />
               <span>Historia e Abonuesit</span>
+            </div>
+            {!isBranchSelected && <Lock className="w-3 h-3 text-purple-400/70" />}
+          </button>
+
+          <button
+            onClick={() => handleTabClick('coupons')}
+            className={navButtonClass('coupons')}
+          >
+            <div className="flex items-center gap-2.5">
+              <Ticket className="w-4 h-4 text-indigo-400" />
+              <span>Kuponi</span>
             </div>
             {!isBranchSelected && <Lock className="w-3 h-3 text-purple-400/70" />}
           </button>

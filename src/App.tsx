@@ -15,6 +15,8 @@ import { Academy } from './components/Academy';
 import { GroupReservations } from './components/GroupReservations';
 import { Agents } from './components/Agents';
 import { UserSubscriptionHistoryView } from './components/UserSubscriptionHistoryView';
+import { PaymentHistory } from './components/PaymentHistory';
+import { Coupons } from './components/Coupons';
 import { PrintTicketModal } from './components/PrintTicketModal';
 import { ReserveSlotModal } from './components/ReserveSlotModal';
 
@@ -321,6 +323,10 @@ export default function App() {
           {activeTab === 'agents' && <Agents />}
 
           {activeTab === 'sub_history' && <UserSubscriptionHistoryView />}
+
+          {activeTab === 'payment_history' && <PaymentHistory />}
+
+          {activeTab === 'coupons' && <Coupons />}
 
         </main>
       </div>

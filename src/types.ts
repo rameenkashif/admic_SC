@@ -19,7 +19,9 @@ export type NavTab =
   | 'prog_first_team'
   | 'group_reservations'
   | 'agents'
-  | 'sub_history';
+  | 'sub_history'
+  | 'payment_history'
+  | 'coupons';
 
 export interface Reception {
   id: string;
@@ -195,4 +197,31 @@ export interface UserSubscriptionHistory {
   subscriptionPlan: string;
   scansThisMonth: number;
   events: SubscriptionHistoryEvent[];
+}
+
+export interface PaymentRecord {
+  id: string;
+  name: string;
+  idNumber: string;
+  type: string;
+  amount: number;
+  time: string;
+}
+
+export interface PaymentDay {
+  id: string;
+  date: string;
+  registerStatus: 'Arka e Hapur' | 'Arka e Mbyllur';
+  payments: PaymentRecord[];
+}
+
+export interface Coupon {
+  id: string;
+  date: string;
+  lloji: string;
+  pershkrimi: string;
+  partneri: string;
+  vlera: number;
+  adresa: string;
+  file: string;
 }
