@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Lock, User, Eye, EyeOff, ShieldCheck, Check } from 'lucide-react';
 import { ScLogo } from './ScLogo';
-import bgDark from '../assets/images/bg_dark.jpg';
 
 interface LoginPageProps {
   onLoginSuccess: () => void;
@@ -34,12 +33,38 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
 
   return (
     <div className="min-h-screen w-full relative flex items-center justify-center p-4 overflow-hidden bg-slate-950 font-sans">
-      {/* Photo Liquid Background — always the dark variant, matching the login page's fixed dark identity */}
-      <div
-        className="absolute inset-0 z-0 pointer-events-none bg-cover bg-center"
-        style={{ backgroundImage: `url(${bgDark})`, filter: 'blur(2px)' }}
-      ></div>
-      <div className="absolute inset-0 z-0 pointer-events-none bg-[#0d152a]/55"></div>
+      {/* Swimming Pool & Water Aesthetic Navy Background */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        {/* Deep navy blue and indigo radial glows matching Admin Panel */}
+        <div className="absolute -top-20 -left-20 w-[40rem] h-[40rem] bg-indigo-800/40 rounded-full blur-[100px] animate-pulse"></div>
+        <div className="absolute -bottom-20 -right-20 w-[45rem] h-[45rem] bg-slate-900/80 rounded-full blur-[120px] animate-pulse"></div>
+        
+        {/* Vivid organic liquid shapes directly behind card for refraction */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-[55%] -translate-y-[60%] w-[26rem] h-[26rem] bg-gradient-to-tr from-cyan-500/40 via-teal-400/30 to-indigo-600/40 rounded-full blur-[50px] transform rotate-12"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-[40%] -translate-y-[35%] w-[22rem] h-[22rem] bg-gradient-to-br from-blue-600/35 via-sky-400/30 to-emerald-500/25 rounded-full blur-[40px]"></div>
+
+        {/* Swimming Pool Water Surface Caustics Overlay */}
+        <div 
+          className="absolute inset-0 opacity-30 mix-blend-screen"
+          style={{
+            backgroundImage: `
+              radial-gradient(circle at 35% 35%, rgba(6, 182, 212, 0.5) 0%, transparent 45%),
+              radial-gradient(circle at 65% 65%, rgba(99, 102, 241, 0.45) 0%, transparent 45%),
+              radial-gradient(circle at 50% 50%, rgba(20, 184, 166, 0.4) 0%, transparent 55%)
+            `,
+          }}
+        ></div>
+
+        {/* Animated Water Ripples SVG Lines */}
+        <div className="absolute inset-0 opacity-20 flex flex-col justify-between pointer-events-none">
+          <svg className="w-full h-40 text-cyan-300" fill="none" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0 C150,90 350,-40 500,60 C650,160 900,10 1200,40 L1200,120 L0,120 Z" fill="currentColor" />
+          </svg>
+          <svg className="w-full h-40 text-teal-300 transform rotate-180" fill="none" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0 C150,90 350,-40 500,60 C650,160 900,10 1200,40 L1200,120 L0,120 Z" fill="currentColor" />
+          </svg>
+        </div>
+      </div>
 
       {/* Main Figma Liquid Glass Card Block */}
       <div className="relative z-10 w-full max-w-md">
@@ -51,7 +76,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
           {/* Centered Logo & Welcome Heading */}
           <div className="flex flex-col items-center text-center mb-6">
             <div className="mb-4 flex justify-center">
-              <ScLogo showSubtitle={false} theme="dark" />
+              <ScLogo showSubtitle={false} />
             </div>
 
             {/* Title in Cal Sans */}
