@@ -1,6 +1,158 @@
 import React, { useMemo, useState } from 'react';
-import { Wallet, Search, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Lock, LockOpen } from 'lucide-react';
+import { Wallet, Search, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Lock, LockOpen, CalendarDays, X } from 'lucide-react';
 import { PaymentDay } from '../types';
+
+const ALB_MONTHS = ['Janar', 'Shkurt', 'Mars', 'Prill', 'Maj', 'Qershor', 'Korrik', 'Gusht', 'Shtator', 'Tetor', 'Nëntor', 'Dhjetor'];
+const ALB_WEEKDAYS = ['Hën', 'Mar', 'Mër', 'Enj', 'Pre', 'Sht', 'Die'];
+
+const pad2 = (n: number) => String(n).padStart(2, '0');
+const toISODate = (d: Date) => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
+
+interface DateFieldProps {
+  label: string;
+  value: string; // ISO yyyy-mm-dd or ''
+  onChange: (v: string) => void;
+}
+
+// Custom calendar-dropdown date picker matching the app's dark glass theme
+const DateField: React.FC<DateFieldProps> = ({ label, value, onChange }) => {
+  const [open, setOpen] = useState(false);
+  const parsed = value ? new Date(`${value}T00:00:00`) : new Date();
+  const [viewYear, setViewYear] = useState(parsed.getFullYear());
+  const [viewMonth, setViewMonth] = useState(parsed.getMonth());
+
+  const openPicker = () => {
+    const base = value ? new Date(`${value}T00:00:00`) : new Date();
+    setViewYear(base.getFullYear());
+    setViewMonth(base.getMonth());
+    setOpen(true);
+  };
+
+  const goPrevMonth = () => {
+    if (viewMonth === 0) {
+      setViewMonth(11);
+      setViewYear((y) => y - 1);
+    } else {
+      setViewMonth((m) => m - 1);
+    }
+  };
+
+  const goNextMonth = () => {
+    if (viewMonth === 11) {
+      setViewMonth(0);
+      setViewYear((y) => y + 1);
+    } else {
+      setViewMonth((m) => m + 1);
+    }
+  };
+
+  const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+  const firstWeekday = (new Date(viewYear, viewMonth, 1).getDay() + 6) % 7; // Monday-first
+  const cells: (number | null)[] = [
+    ...Array(firstWeekday).fill(null),
+    ...Array.from({ length: daysInMonth }, (_, i) => i + 1),
+  ];
+
+  const today = new Date();
+  const todayISO = toISODate(today);
+
+  const selectDay = (day: number) => {
+    onChange(toISODate(new Date(viewYear, viewMonth, day)));
+    setOpen(false);
+  };
+
+  const displayValue = value
+    ? `${pad2(parsed.getDate())}/${pad2(parsed.getMonth() + 1)}/${parsed.getFullYear()}`
+    : '';
+
+  return (
+    <div className="relative">
+      <label className="block text-[10px] font-bold text-indigo-300 uppercase tracking-wider mb-1.5">{label}</label>
+      <button
+        type="button"
+        onClick={() => (open ? setOpen(false) : openPicker())}
+        className="w-full flex items-center justify-between bg-slate-950/80 border border-indigo-500/20 rounded-2xl px-4 py-2.5 text-xs focus:outline-none focus:border-indigo-400/60 shadow-inner"
+      >
+        <span className={displayValue ? 'text-white' : 'text-slate-500'}>{displayValue || 'dd/mm/yyyy'}</span>
+        <CalendarDays className="w-4 h-4 text-indigo-300" />
+      </button>
+
+      {open && (
+        <>
+          <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
+          <div className="absolute z-50 mt-2 w-72 bg-slate-900 border border-indigo-500/30 rounded-2xl p-4 shadow-2xl">
+            <div className="flex items-center justify-between mb-3">
+              <button
+                type="button"
+                onClick={goPrevMonth}
+                className="w-7 h-7 rounded-lg flex items-center justify-center text-slate-300 hover:bg-indigo-500/20 hover:text-white transition"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <span className="text-xs font-bold text-white">
+                {ALB_MONTHS[viewMonth]} {viewYear}
+              </span>
+              <button
+                type="button"
+                onClick={goNextMonth}
+                className="w-7 h-7 rounded-lg flex items-center justify-center text-slate-300 hover:bg-indigo-500/20 hover:text-white transition"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="grid grid-cols-7 gap-1 mb-1">
+              {ALB_WEEKDAYS.map((w) => (
+                <div key={w} className="text-center text-[9px] font-bold text-slate-500 uppercase">
+                  {w}
+                </div>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-7 gap-1">
+              {cells.map((day, i) => {
+                if (day === null) return <div key={`blank-${i}`} />;
+                const iso = toISODate(new Date(viewYear, viewMonth, day));
+                const isSelected = iso === value;
+                const isToday = iso === todayISO;
+                return (
+                  <button
+                    key={iso}
+                    type="button"
+                    onClick={() => selectDay(day)}
+                    className={`h-7 rounded-lg text-[11px] font-semibold transition ${
+                      isSelected
+                        ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30'
+                        : isToday
+                        ? 'text-indigo-300 ring-1 ring-indigo-400/50'
+                        : 'text-slate-300 hover:bg-indigo-500/20 hover:text-white'
+                    }`}
+                  >
+                    {day}
+                  </button>
+                );
+              })}
+            </div>
+
+            {value && (
+              <button
+                type="button"
+                onClick={() => {
+                  onChange('');
+                  setOpen(false);
+                }}
+                className="mt-3 w-full flex items-center justify-center gap-1.5 text-[10px] font-bold text-rose-300 hover:text-rose-200 transition"
+              >
+                <X className="w-3 h-3" />
+                <span>Pastro datën</span>
+              </button>
+            )}
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
 
 // Mock dataset matching the reference screenshots (31 days ending 7/27/2026)
 const buildMockPaymentDays = (): PaymentDay[] => {
@@ -113,28 +265,24 @@ export const PaymentHistory: React.FC = () => {
         {/* Filters Bar: From / To / Search */}
         <div className="flex flex-col lg:flex-row items-stretch lg:items-end gap-4">
           <div className="flex-1">
-            <label className="block text-[10px] font-bold text-indigo-300 uppercase tracking-wider mb-1.5">From:</label>
-            <input
-              type="date"
+            <DateField
+              label="From:"
               value={dateFrom}
-              onChange={(e) => {
-                setDateFrom(e.target.value);
+              onChange={(v) => {
+                setDateFrom(v);
                 setCurrentPage(1);
               }}
-              className="w-full bg-slate-950/80 border border-indigo-500/20 rounded-2xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-400/60 shadow-inner"
             />
           </div>
 
           <div className="flex-1">
-            <label className="block text-[10px] font-bold text-indigo-300 uppercase tracking-wider mb-1.5">To:</label>
-            <input
-              type="date"
+            <DateField
+              label="To:"
               value={dateTo}
-              onChange={(e) => {
-                setDateTo(e.target.value);
+              onChange={(v) => {
+                setDateTo(v);
                 setCurrentPage(1);
               }}
-              className="w-full bg-slate-950/80 border border-indigo-500/20 rounded-2xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-400/60 shadow-inner"
             />
           </div>
 

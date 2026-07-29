@@ -37,6 +37,7 @@ export const Coupons: React.FC = () => {
   const [adresa, setAdresa] = useState('1#Prishtinë, 10000, Rr. NN');
 
   const [coupons, setCoupons] = useState<Coupon[]>(INITIAL_COUPONS);
+  const [shiftCounter, setShiftCounter] = useState(47);
 
   // Live-updating clock for the DATE field, matching the reference form
   useEffect(() => {
@@ -66,18 +67,17 @@ export const Coupons: React.FC = () => {
 
   const handleGenerateReport = (kind: 'X' | 'Z') => {
     const createdAt = new Date();
-    const content =
-      `STEP SPORT CENTER - Flink ${kind}-Report\n` +
-      `Gjeneruar: ${formatDateTime(createdAt)}\n\n` +
-      coupons
-        .map((c) => `${c.date} | ${c.lloji} | ${c.partneri} | ${c.vlera} EUR | ${c.file}`)
-        .join('\n');
+    const shift = shiftCounter + 1;
+    setShiftCounter(shift);
+
+    // Flink fiscal command format: <X|Z>,<register>,______,_,__;
+    const content = `${kind},1,______,_,__;\n`;
 
     const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `${kind}-Report_${formatFileStamp(createdAt)}.txt`;
+    link.download = `${kind === 'X' ? 'x_report' : 'z_report'}_shift_${shift}_${formatFileStamp(createdAt)}.inp`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
