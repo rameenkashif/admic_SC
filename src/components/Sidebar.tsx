@@ -36,6 +36,7 @@ interface SidebarProps {
   searchQuery: string;
   setSearchQuery: (q: string) => void;
   onLogout: () => void;
+  theme: 'dark' | 'light';
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -47,6 +48,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   searchQuery,
   setSearchQuery,
   onLogout,
+  theme,
 }) => {
   const [showReceptionDropdown, setShowReceptionDropdown] = useState(false);
 
@@ -78,7 +80,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     <aside className="w-64 liquid-glass-sidebar h-screen flex flex-col shrink-0 overflow-y-auto select-none border-r border-white/15 shadow-2xl">
       {/* Brand Header */}
       <div className="p-4 border-b border-indigo-500/10">
-        <ScLogo />
+        <ScLogo theme={theme} />
       </div>
 
       {/* Menu Search Bar */}

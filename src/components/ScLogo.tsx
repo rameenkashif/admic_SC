@@ -1,15 +1,19 @@
 import React from 'react';
-import logoImg from '../assets/images/step_center_logo_1784786974967.jpg';
+import logoBlue from '../assets/images/logo_blue.png';
+import logoWhite from '../assets/images/logo_white.png';
 
 interface ScLogoProps {
   className?: string;
   showSubtitle?: boolean;
+  theme?: 'dark' | 'light';
 }
 
-export const ScLogo: React.FC<ScLogoProps> = ({ className = "h-10", showSubtitle = true }) => {
+export const ScLogo: React.FC<ScLogoProps> = ({ showSubtitle = true, theme = 'dark' }) => {
+  const logoImg = theme === 'light' ? logoBlue : logoWhite;
+
   return (
     <div className="flex items-center gap-3">
-      {/* SC Logo Image */}
+      {/* SC Logo Image — blue mark in light theme, white mark in dark theme */}
       <img
         src={logoImg}
         alt="SC Sports & Leisure"
