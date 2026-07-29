@@ -334,7 +334,7 @@ export const Academy: React.FC = () => {
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-indigo-500/15 pb-6">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
-              <Trophy className="w-7 h-7 text-amber-400" />
+              <Trophy className="w-7 h-7 text-indigo-400" />
               <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
                 Ekipa e parë/Akademia
               </h1>
@@ -399,7 +399,7 @@ export const Academy: React.FC = () => {
                             </span>
                             <button
                               onClick={() => handleSendEmail(student)}
-                              className="px-3 py-1 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-[11px] flex items-center gap-1.5 shadow transition active:scale-95"
+                              className="px-3 py-1 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-[11px] flex items-center gap-1.5 shadow transition active:scale-95"
                             >
                               <Mail className="w-3.5 h-3.5" />
                               <span>Dërgo Email</span>
@@ -418,18 +418,18 @@ export const Academy: React.FC = () => {
                         </td>
 
                         {/* Borxhi */}
-                        <td className="py-4 px-4 align-middle font-black text-amber-500 text-base">
+                        <td className="py-4 px-4 align-middle font-black text-cyan-300 text-base">
                           {student.borxhi}
                         </td>
 
                         {/* Totali */}
-                        <td className="py-4 px-4 align-middle font-black text-red-400 text-base">
+                        <td className="py-4 px-4 align-middle font-black text-blue-300 text-base">
                           {student.totali}€
                         </td>
 
                         {/* Grupi */}
                         <td className="py-4 px-4 align-middle">
-                          <span className="px-3 py-1 rounded-xl bg-emerald-500/20 text-emerald-300 font-black text-xs border border-emerald-400/30 uppercase tracking-wide inline-block">
+                          <span className="px-3 py-1 rounded-xl bg-blue-500/20 text-blue-300 font-black text-xs border border-blue-400/30 uppercase tracking-wide inline-block">
                             {student.grupi}
                           </span>
                         </td>
@@ -589,7 +589,7 @@ export const Academy: React.FC = () => {
                                     <span className="text-slate-400 block text-[11px]">
                                       Grupi:
                                     </span>
-                                    <span className="text-emerald-400 font-bold uppercase">
+                                    <span className="text-blue-400 font-bold uppercase">
                                       {student.grupi}
                                     </span>
                                   </div>

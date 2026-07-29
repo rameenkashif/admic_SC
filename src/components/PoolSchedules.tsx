@@ -243,8 +243,30 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
       saturdaySlot2?: string;
       saturdaySub2?: string;
     },
-    allowAddTemp: boolean = true
+    allowAddTemp: boolean = true,
+    capacity: number = 14
   ) => {
+    const renderOccupancyBar = (count: number) => {
+      const pct = Math.min((count / capacity) * 100, 100);
+      const isFull = count >= capacity;
+      return (
+        <div className="pt-2 mt-2 border-t border-slate-800/80 space-y-1.5">
+          <div className="flex items-center justify-between text-[10px] font-bold">
+            <span className={isFull ? 'text-rose-400' : 'text-blue-400'}>
+              Të zëna: {count}/{capacity}
+            </span>
+            <span className="text-slate-500">Lirë: {Math.max(capacity - count, 0)}</span>
+          </div>
+          <div className="w-full h-1.5 bg-slate-500/25 rounded-full overflow-hidden">
+            <div
+              className={`h-full rounded-full transition-all ${isFull ? 'bg-rose-500' : 'bg-blue-500'}`}
+              style={{ width: `${pct}%` }}
+            />
+          </div>
+        </div>
+      );
+    };
+
     return (
       <div className="bg-[#0e1322] text-slate-100 p-6 sm:p-8 rounded-3xl shadow-2xl border border-slate-800/80 mb-8 space-y-6">
         {/* Top Header Bar: Title, Search & Actions */}
@@ -375,9 +397,9 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
                   </div>
 
                   {/* SLOT 1 BLOCK */}
-                  <div className="bg-[#151c2e] border-2 border-blue-500/90 rounded-2xl p-3.5 h-[290px] min-h-[290px] shadow-xl shadow-blue-950/40 hover:border-blue-400 transition flex flex-col justify-between w-full">
+                  <div className="bg-[#151c2e] border-2 border-blue-500/90 rounded-2xl p-3.5 aspect-square overflow-hidden shadow-xl shadow-blue-950/40 hover:border-blue-400 transition flex flex-col justify-between w-full">
                     {/* Timing Badge */}
-                    <div className="mb-2">
+                    <div className="mb-2 shrink-0">
                       <div className="bg-blue-600/90 text-white font-extrabold px-2.5 py-1 rounded-lg text-xs flex flex-col text-center shadow-sm">
                         <span>{slot1Time}</span>
                         {slot1Sub && (
@@ -387,7 +409,7 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
                     </div>
 
                     {/* Members List */}
-                    <div className="flex-1 overflow-y-auto pr-1 space-y-1.5 max-h-[180px] scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-slate-800/40">
+                    <div className="flex-1 min-h-0 overflow-y-auto pr-1 space-y-1.5">
                       {slot1Members.map((m, idx) => (
                         <div
                           key={m.id}
@@ -416,18 +438,14 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
                       )}
                     </div>
 
-                    {/* Footer */}
-                    <div className="pt-2 mt-2 border-t border-slate-800/80 text-center">
-                      <span className="text-blue-400 font-mono font-bold text-xs">
-                        Totali: {slot1Members.length}
-                      </span>
-                    </div>
+                    {/* Occupancy Footer */}
+                    <div className="shrink-0">{renderOccupancyBar(slot1Members.length)}</div>
                   </div>
 
                   {/* SLOT 2 BLOCK (OR PLACEHOLDER) */}
                   {slot2Time ? (
-                    <div className="bg-[#151c2e] border-2 border-blue-500/90 rounded-2xl p-3.5 h-[290px] min-h-[290px] shadow-xl shadow-blue-950/40 hover:border-blue-400 transition flex flex-col justify-between w-full">
-                      <div className="mb-2">
+                    <div className="bg-[#151c2e] border-2 border-blue-500/90 rounded-2xl p-3.5 aspect-square overflow-hidden shadow-xl shadow-blue-950/40 hover:border-blue-400 transition flex flex-col justify-between w-full">
+                      <div className="mb-2 shrink-0">
                         <div className="bg-blue-600/90 text-white font-extrabold px-2.5 py-1 rounded-lg text-xs flex flex-col text-center shadow-sm">
                           <span>{slot2Time}</span>
                           {slot2Sub && (
@@ -436,7 +454,7 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
                         </div>
                       </div>
 
-                      <div className="flex-1 overflow-y-auto pr-1 space-y-1.5 max-h-[180px] scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-slate-800/40">
+                      <div className="flex-1 min-h-0 overflow-y-auto pr-1 space-y-1.5">
                         {slot2Members.map((m, idx) => (
                           <div
                             key={m.id}
@@ -465,14 +483,10 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
                         )}
                       </div>
 
-                      <div className="pt-2 mt-2 border-t border-slate-800/80 text-center">
-                        <span className="text-blue-400 font-mono font-bold text-xs">
-                          Totali: {slot2Members.length}
-                        </span>
-                      </div>
+                      <div className="shrink-0">{renderOccupancyBar(slot2Members.length)}</div>
                     </div>
                   ) : (
-                    <div className="bg-[#111728]/50 border border-slate-800/60 rounded-2xl p-3.5 h-[290px] min-h-[290px] flex flex-col justify-center items-center text-center text-slate-600 text-xs italic">
+                    <div className="bg-[#111728]/50 border border-slate-800/60 rounded-2xl p-3.5 aspect-square flex flex-col justify-center items-center text-center text-slate-600 text-xs italic">
                       Nuk ka orar pasdite
                     </div>
                   )}
@@ -500,7 +514,8 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
             saturdaySlot1: '10:00 - 11:00',
             saturdaySlot2: '11:00 - 12:00',
           },
-          true
+          true,
+          16
         )}
 
       {/* RENDER FOR PISHINAT E VOGLA (SHOWING BOTH KATI 1 AND KATI 2) */}
@@ -517,7 +532,8 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
               saturdaySlot1: '10:00 - 11:00',
               saturdaySlot2: '11:00 - 12:00',
             },
-            true
+            true,
+            12
           )}
 
           {/* SECTION 2: Kati i dytë */}
@@ -534,7 +550,8 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
               saturdaySlot2: '11:00 - 12:00',
               saturdaySub2: '3 vjeçar',
             },
-            true
+            true,
+            12
           )}
         </div>
       )}
@@ -550,7 +567,8 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
             saturdaySlot1: '10:00 - 11:00',
             saturdaySlot2: '11:00 - 12:00',
           },
-          true
+          true,
+          20
         )}
 
       {/* RENDER FOR KIDS FITNESS (NO ADD TEMP RESERVATION BUTTON) */}
@@ -564,7 +582,8 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
             saturdaySlot1: '11:00 - 12:00',
             saturdaySlot2: '12:00 - 13:00',
           },
-          false
+          false,
+          15
         )}
 
       {/* RENDER FOR ADULT FITNESS / STEP ADULTS (NO ADD TEMP RESERVATION BUTTON) */}
@@ -578,7 +597,8 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
             saturdaySlot1: '12:00 - 13:00',
             saturdaySlot2: '13:00 - 14:00',
           },
-          false
+          false,
+          20
         )}
 
       {/* MODAL 1: Rezervim i përkohshëm (Temporary Reservation Modal) */}

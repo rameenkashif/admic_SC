@@ -210,6 +210,17 @@ html.light .text-white {
   color: #0f172a !important;
 }
 
+/* Buttons keep white text in light mode — they sit on colored/gradient
+   fills, not the white page background the rule above is meant for.
+   Excludes translucent bg-white/x "glass" buttons (e.g. the active sidebar
+   nav item), whose surface is already light and needs dark text instead. */
+html.light button.text-white:not([class*="bg-white/"]),
+html.light button .text-white:not([class*="bg-white/"]),
+html.light a.text-white:not([class*="bg-white/"]),
+html.light a .text-white:not([class*="bg-white/"]) {
+  color: #ffffff !important;
+}
+
 html.light .text-slate-100,
 html.light .text-slate-200,
 html.light .text-slate-300 {
