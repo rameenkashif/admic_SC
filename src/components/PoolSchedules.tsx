@@ -250,7 +250,7 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
       const pct = Math.min((count / capacity) * 100, 100);
       const isFull = count >= capacity;
       return (
-        <div className="pt-2 mt-2 border-t border-slate-800/80 space-y-1.5">
+        <div className="pt-2 mt-2 border-t border-indigo-500/10 space-y-1.5">
           <div className="flex items-center justify-between text-[10px] font-bold">
             <span className={isFull ? 'text-rose-400' : 'text-blue-400'}>
               Të zëna: {count}/{capacity}
@@ -268,9 +268,9 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
     };
 
     return (
-      <div className="bg-[#0e1322] text-slate-100 p-6 sm:p-8 rounded-3xl shadow-2xl border border-slate-800/80 mb-8 space-y-6">
+      <div className="glass-panel text-slate-100 p-6 sm:p-8 rounded-3xl border border-indigo-500/20 bg-slate-900/60 backdrop-blur-xl shadow-2xl mb-8 space-y-6">
         {/* Top Header Bar: Title, Search & Actions */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-indigo-500/15">
           <div className="space-y-1">
             <div className="flex items-center gap-3">
               <span className={`w-3.5 h-3.5 rounded-full ${badgeBg} shadow-lg animate-pulse`} />
@@ -318,7 +318,7 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
         </div>
 
         {/* Search bar & info row */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 bg-[#141b2e] p-3.5 rounded-2xl border border-slate-800">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 bg-slate-900/60 p-3.5 rounded-2xl border border-indigo-500/20">
           <div className="text-xs text-blue-400 font-semibold flex items-center gap-2">
             <span className="inline-block w-2 h-2 rounded-full bg-blue-400" />
             <span>Kërko anëtarët sipas emrit ose mbiemrit</span>
@@ -330,7 +330,7 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Kërko anëtarin..."
-              className="w-full bg-[#1b243b] border border-slate-700/80 rounded-xl px-4 py-2 text-xs sm:text-sm text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              className="w-full bg-slate-950/80 border border-indigo-500/20 rounded-xl px-4 py-2 text-xs sm:text-sm text-slate-100 placeholder-slate-400 focus:outline-none focus:border-indigo-400/60 transition"
             />
           </div>
         </div>
@@ -390,14 +390,14 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
               return (
                 <div key={dayName} className="space-y-4 flex flex-col">
                   {/* Day Header */}
-                  <div className="bg-[#182136] border border-blue-500/30 rounded-2xl py-3 px-2 text-center shadow-md">
-                    <span className="font-extrabold text-xs sm:text-sm text-blue-400 uppercase tracking-wider block">
+                  <div className="bg-indigo-950/40 border border-indigo-500/20 rounded-2xl py-3 px-2 text-center shadow-md">
+                    <span className="font-extrabold text-xs sm:text-sm text-indigo-300 uppercase tracking-wider block">
                       {dayName}
                     </span>
                   </div>
 
                   {/* SLOT 1 BLOCK */}
-                  <div className="bg-[#151c2e] border-2 border-blue-500/90 rounded-2xl p-3.5 aspect-square min-h-[230px] overflow-hidden shadow-xl shadow-blue-950/40 hover:border-blue-400 transition flex flex-col justify-between w-full">
+                  <div className="bg-slate-950/50 border border-indigo-500/20 rounded-2xl p-3.5 aspect-square min-h-[230px] overflow-hidden shadow-xl hover:border-indigo-400/40 transition flex flex-col justify-between w-full">
                     {/* Timing Badge */}
                     <div className="mb-2 shrink-0">
                       <div className="bg-blue-600/90 text-white font-extrabold px-2.5 py-1 rounded-lg text-xs flex flex-col text-center shadow-sm">
@@ -444,7 +444,7 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
 
                   {/* SLOT 2 BLOCK (OR PLACEHOLDER) */}
                   {slot2Time ? (
-                    <div className="bg-[#151c2e] border-2 border-blue-500/90 rounded-2xl p-3.5 aspect-square min-h-[230px] overflow-hidden shadow-xl shadow-blue-950/40 hover:border-blue-400 transition flex flex-col justify-between w-full">
+                    <div className="bg-slate-950/50 border border-indigo-500/20 rounded-2xl p-3.5 aspect-square min-h-[230px] overflow-hidden shadow-xl hover:border-indigo-400/40 transition flex flex-col justify-between w-full">
                       <div className="mb-2 shrink-0">
                         <div className="bg-blue-600/90 text-white font-extrabold px-2.5 py-1 rounded-lg text-xs flex flex-col text-center shadow-sm">
                           <span>{slot2Time}</span>
@@ -486,7 +486,7 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
                       <div className="shrink-0">{renderOccupancyBar(slot2Members.length)}</div>
                     </div>
                   ) : (
-                    <div className="bg-[#111728]/50 border border-slate-800/60 rounded-2xl p-3.5 aspect-square min-h-[230px] flex flex-col justify-center items-center text-center text-slate-600 text-xs italic">
+                    <div className="bg-slate-950/30 border border-indigo-500/10 rounded-2xl p-3.5 aspect-square min-h-[230px] flex flex-col justify-center items-center text-center text-slate-500 text-xs italic">
                       Nuk ka orar pasdite
                     </div>
                   )}
@@ -604,7 +604,7 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
       {/* MODAL 1: Rezervim i përkohshëm (Temporary Reservation Modal) */}
       {showTempModal && (
         <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4 animate-in fade-in duration-200">
-          <div className="bg-[#141b2e] rounded-3xl p-6 sm:p-7 max-w-xl w-full shadow-2xl border border-slate-700/80 text-slate-100 space-y-5">
+          <div className="bg-slate-900 rounded-3xl p-6 sm:p-7 max-w-xl w-full shadow-2xl border border-indigo-500/30 text-slate-100 space-y-5">
             <h2 className="text-lg sm:text-xl font-extrabold text-white text-center tracking-tight">
               Rezervim i përkohshëm
             </h2>
@@ -618,7 +618,7 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
                   value={tempName}
                   onChange={(e) => setTempName(e.target.value)}
                   placeholder="Shkruaj emrin..."
-                  className="w-full bg-[#1b243b] border border-slate-700/80 rounded-xl p-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
+                  className="w-full bg-slate-950 border border-indigo-500/20 rounded-xl p-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-400/60 shadow-sm"
                 />
               </div>
 
@@ -635,7 +635,7 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
                   className={`px-4 py-2.5 rounded-xl font-extrabold transition shadow-sm text-xs sm:text-sm whitespace-nowrap cursor-pointer border ${
                     isFillMode
                       ? 'bg-amber-500 hover:bg-amber-400 border-amber-400 text-slate-950 shadow-md'
-                      : 'bg-[#1b243b] hover:bg-slate-800 border-slate-700 text-slate-200 font-bold'
+                      : 'bg-slate-950 hover:bg-slate-800 border-indigo-500/20 text-slate-200 font-bold'
                   }`}
                   title="Shëno si tä mbushur (FILL)"
                 >
@@ -648,7 +648,7 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
                     setSelectedTempDays({});
                     setIsFillMode(false);
                   }}
-                  className="bg-[#1b243b] hover:bg-slate-800 border border-slate-700 text-slate-200 font-bold px-4 py-2.5 rounded-xl transition shadow-sm text-xs sm:text-sm whitespace-nowrap cursor-pointer"
+                  className="bg-slate-950 hover:bg-slate-800 border border-indigo-500/20 text-slate-200 font-bold px-4 py-2.5 rounded-xl transition shadow-sm text-xs sm:text-sm whitespace-nowrap cursor-pointer"
                   title="Pastro/Rifillo formën"
                 >
                   RIFILL
@@ -678,7 +678,7 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
                       className={`px-2 py-2 border rounded-xl font-bold text-xs text-center transition cursor-pointer ${
                         isSel
                           ? 'border-blue-500 bg-blue-600 text-white shadow-lg shadow-blue-600/30'
-                          : 'border-slate-700 bg-[#1b243b] text-slate-300 hover:border-blue-500/60 hover:text-white'
+                          : 'border-indigo-500/20 bg-slate-950 text-slate-300 hover:border-indigo-400/60 hover:text-white'
                       }`}
                     >
                       {d}
@@ -689,7 +689,7 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
             </div>
 
             {/* Actions */}
-            <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-800">
+            <div className="flex items-center justify-end gap-3 pt-3 border-t border-indigo-500/15">
               <button
                 type="button"
                 onClick={() => setShowTempModal(false)}
@@ -712,12 +712,12 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
       {/* MODAL 2: Member Details ("Zgjidh afatet për regjistrimin e mëposhtëm") */}
       {selectedMember && (
         <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4 overflow-y-auto animate-in fade-in duration-200">
-          <div className="my-auto bg-[#141b2e] rounded-3xl p-6 sm:p-8 max-w-2xl w-full shadow-2xl border border-slate-700/80 text-slate-100 space-y-6 max-h-[92vh] overflow-y-auto">
+          <div className="my-auto bg-slate-900 rounded-3xl p-6 sm:p-8 max-w-2xl w-full shadow-2xl border border-indigo-500/30 text-slate-100 space-y-6 max-h-[92vh] overflow-y-auto">
             <h2 className="text-xl sm:text-2xl font-black text-white text-center tracking-tight">
               Zgjidh afatet për regjistrimin e mëposhtëm
             </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-8 text-xs sm:text-sm font-medium text-slate-300 bg-[#1b243b]/90 border border-slate-800 p-4 rounded-2xl">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-8 text-xs sm:text-sm font-medium text-slate-300 bg-slate-950/80 border border-indigo-500/20 p-4 rounded-2xl">
               <div className="space-y-2">
                 <div>
                   <span className="font-bold text-white">Type: </span>
@@ -770,7 +770,7 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
                         pool: e.target.value,
                       })
                     }
-                    className="w-full bg-[#0e1322] border border-slate-700 rounded-xl px-3 py-2 text-xs sm:text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
+                    className="w-full bg-slate-950 border border-indigo-500/20 rounded-xl px-3 py-2 text-xs sm:text-sm text-white focus:outline-none focus:border-indigo-400/60 shadow-sm"
                   >
                     <option value="Pishina me 4 korsi">Pishina me 4 korsi</option>
                     <option value="Pishina e vogël - Kati i parë">Pishina e vogël - Kati i parë</option>
@@ -802,7 +802,7 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
                       className={`flex-1 py-2.5 px-4 rounded-xl font-bold text-xs sm:text-sm transition text-center shadow-sm ${
                         isSelected
                           ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30'
-                          : 'border border-slate-700 bg-[#1b243b] text-slate-300 hover:border-blue-500 hover:text-white'
+                          : 'border border-indigo-500/20 bg-slate-950 text-slate-300 hover:border-indigo-400/60 hover:text-white'
                       }`}
                     >
                       {dayName}
@@ -814,7 +814,7 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
                         onChange={(e) =>
                           updateDayTimeInMemberModal(dayName, e.target.value)
                         }
-                        className="bg-[#0e1322] border border-blue-500/80 rounded-xl px-3 py-2 text-xs sm:text-sm text-blue-400 font-bold focus:outline-none shadow-sm cursor-pointer"
+                        className="bg-slate-950 border border-indigo-500/40 rounded-xl px-3 py-2 text-xs sm:text-sm text-indigo-300 font-bold focus:outline-none shadow-sm cursor-pointer"
                       >
                         <option value="10:00">10:00</option>
                         <option value="11:00">11:00</option>
@@ -829,7 +829,7 @@ export const PoolSchedules: React.FC<PoolSchedulesProps> = ({
               })}
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-slate-800">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-indigo-500/15">
               <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
                 <button
                   type="button"
